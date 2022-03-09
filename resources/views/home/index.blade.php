@@ -1,12 +1,10 @@
-@extends("layouts.home")
+@extends("layouts.site")
 
-@section("title", "Page başlığı")
+@section('title', $data['setting']->title)
+@section('keywords', $data['setting']->keywords)
+@section('description', $data['setting']->description)
+@section('author', $data['setting']->company)
 
-@section("sidebar")
-    @parent
-    <p>Üste bağlanan yer</p>
-@endsection
-
-@section("content")
-    <p>Content içi</p>
+@section('content')
+    @include('home._content')
 @endsection

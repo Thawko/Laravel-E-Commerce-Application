@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,19 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home/{aid}', [HomeController::class, "index"]);
+Route::get('/', "App\Http\Controllers\HomeController@index")->name("site_index");
 
 Route::middleware("auth")->prefix("admin")->group(function () {
 
