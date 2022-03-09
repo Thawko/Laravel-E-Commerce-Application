@@ -1,13 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
+use App\Repositories\CategoryRepository;
+use App\Repositories\SettingRepository;
 class HomeController extends Controller
 {
-    public function index($id){
 
-        return view("home.index",array("a"=>$id));
+    protected $categoryRepository;
+    protected $settingRepository;
+
+    public function __construct(CategoryRepository $categoryRepository, SettingRepository $settingRepository)
+    {
+        $this->categoryRepository=$categoryRepository;
+        $this->settingRepository=$settingRepository;
+    }
+    public function index(){
+        $data['categories']=$this->categoryRepository->getAll();
+        $data['setting']=$this->settingRepository->getAll();
+        return view("home.index", ["data"=>$data]);
     }
 }
