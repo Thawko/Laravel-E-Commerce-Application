@@ -15,8 +15,6 @@ class HomeController extends Controller
         $this->settingRepository=$settingRepository;
     }
     public function index(){
-        $data['categories']=$this->categoryRepository->getAll();
-        $data['setting']=$this->settingRepository->getAll();
-        return view("home.index", ["data"=>$data]);
+        return "Site index";
     }
 }
