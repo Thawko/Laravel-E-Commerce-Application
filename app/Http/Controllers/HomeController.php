@@ -15,6 +15,6 @@ class HomeController extends Controller
         $this->settingRepository=$settingRepository;
     }
     public function index(){
-        return "Site index";
+        return "Site index  ";
     }
 }
